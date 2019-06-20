@@ -8,8 +8,10 @@
     <title>Title Page</title>
 
     <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -29,7 +31,6 @@
     </nav>
 
     <div class="container">
-
         <div class="content-area row">
             <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2"></div>
 
@@ -45,8 +46,42 @@
                         <button class="btn btn-primary" onclick="toDo.addTaskClick()">Add</button>
                     </div>
                 </div>
+                <div>
+                    <h4>Task Done:</h4>
+                    <p id="textPercent"></p>
+                    <div class="progress">
+                        <div id="percent" class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-3">
+                        <label for="">Filter: </label>
+                        <select name="" id="filter" class="form-control" onchange="toDo.filterByStatus()">
+                            <option value="all">All</option>
+                            <option value="0">Active</option>
+                            <option value="1">Completed</option>
+                        </select>
+                    </div>
+                    <div class="col-md-7">
 
-                <ul class="list-group" id="taskList"></ul>
+                    </div>
+                    <div class="form-group col-md-2" id="undo">
+                    </div>
+                </div>
+                <!-- <div class="row">
+                    <div class="form-group col-md-3 text-center">
+                        <button class="btn btn-primary">All Task</button>
+                    </div>
+                    <div class="form-group col-md-3 text-center">
+                        <button class="btn btn-success">Completed</button>
+                    </div>
+                    <div class="form-group col-md-3 text-center">
+                        <button class="btn btn-danger">Active</button>
+                    </div>
+                </div> -->
+                <ul class="list-group" id="taskList">
+
+                </ul>
             </div>
 
             <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2"></div>

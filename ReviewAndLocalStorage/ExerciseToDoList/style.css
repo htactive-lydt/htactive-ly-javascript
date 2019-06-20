@@ -21,6 +21,11 @@ body {
     height: 40px;
 }
 
+
+/* .list-group-item:hover {
+    background: #000;
+} */
+
 .hidden {
     display: none;
 }
@@ -33,6 +38,11 @@ body {
 
 .delete-icon {
     color: red;
+    padding-left: 5px;
+}
+
+.edit-icon {
+    color: #0099ff;
 }
 
 .complete {
