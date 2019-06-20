@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title Page</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.3/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-add col-sm-6 offset-sm-3">
+
+            <form action="" method="POST" role="form">
+                <legend>Form Add</legend>
+
+                <div class="form-group">
+                    <label for="">Name: </label>
+                    <input type="text" class="form-control" id="name" placeholder="Input field">
+                </div>
+
+                <div class="form-group">
+                    <label for="">Age: </label>
+                    <input type="text" class="form-control" id="age" placeholder="Input field">
+                </div>
+
+                <button type="button" class="btn btn-primary" onclick="add()">Submit</button>
+            </form>
+
+        </div>
+        <div id="info">
+
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        let itemsArray = [];
+        itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
+        console.log(itemsArray);
+
+        itemsArray[0].name = "Chó";
+        localStorage.setItem('items', JSON.stringify(itemsArray));
+
+        let add = () => {
+            let name = document.getElementById("name").value;
+            let age = document.getElementById("age").value;
+            itemsArray.push({
+                name: name,
+                age: age
+            });
+            localStorage.setItem('items', JSON.stringify(itemsArray));
+            loadData();
+        }
+
+        let loadData = () => {
+            const data = JSON.parse(localStorage.getItem('items'));
+            console.log(data);
+            data.forEach(item => {
+                let label = document.createElement("label");
+                label.textContent = item.name;
+                let div = document.getElementById("info");
+                div.appendChild(label)
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title Page</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.3/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+</head>
+
+<body>
+    <div class="container">
+
+        <h3 class="text-center">CART INFOMATION</h3>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-10 row">
+            <div id="info" style="margin-top: 100px">
+            </div>
+        </div>
+
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script>
+        let product = [{
+            id: 1,
+            name: "Áo croptop",
+            img: "image/img1.png",
+            price: 30000,
+            quantity: 4
+        }, {
+            id: 2,
+            name: "Quần baggy",
+            img: "image/img2.png",
+            price: 90000,
+            quantity: 6
+        }, {
+            id: 3,
+            name: "Váy yếm",
+            img: "image/img3.png",
+            price: 5677,
+            quantity: 9
+        }, {
+            id: 4,
+            name: "Váy maxi",
+            img: "image/img4.png",
+            price: 88966,
+            quantity: 7
+        }, {
+            id: 5,
+            name: "Đầm dạ hội",
+            img: "image/img5.png",
+            price: 100000,
+            quantity: 2
+        }];
+        product.forEach(item => {
+            let div = document.createElement("div");
+            div.className = "row";
+            div.style.marginBottom = "20px"
+
+            let divName = document.createElement("div");
+            divName.className = "col-sm-3";
+
+            let divQuantity = document.createElement("div");
+            divQuantity.className = "col-sm-1";
+
+            let divImage = document.createElement("div");
+            divImage.className = "col-sm-3";
+
+            let divPrice = document.createElement("div");
+            divPrice.className = "col-sm-3";
+
+            let divButton = document.createElement("div");
+            divButton.className = "col-sm-2";
+
+            let labelName = document.createElement("label");
+            labelName.textContent = item.name;
+
+            let img = document.createElement("img")
+            img.src = item.img;
+            img.style.width = "100px"
+            img.style.height = "100px"
+
+            let quantity = document.createElement("input");
+            quantity.type = "text";
+            quantity.value = item.quantity;
+            quantity.className = "form-control col-sm-1";
+
+            let buttonAdd = document.createElement("button");
+            buttonAdd.textContent = "+";
+            buttonAdd.className = "btn btn-primary";
+            buttonAdd.addEventListener("click", () => {
+                item.quantity = parseInt(item.quantity) + 1;
+                quantity.value = item.quantity;
+                labelPrice.textContent = "Price: " + item.price * item.quantity;
+            })
+
+            let buttonSub = document.createElement("button");
+            buttonSub.textContent = "-";
+            buttonSub.className = "btn btn-primary";
+            buttonSub.addEventListener("click", () => {
+                if (item.quantity > 0) {
+                    item.quantity = item.quantity - 1;
+                    quantity.value = item.quantity;
+                    labelPrice.textContent = "Price: " + item.price * item.quantity;
+                }
+            })
+
+            let labelPrice = document.createElement("label");
+            labelPrice.textContent = "Price: " + item.price * item.quantity;
+
+            divName.appendChild(labelName);
+            divImage.appendChild(img);
+            divQuantity.appendChild(quantity);
+            divPrice.appendChild(labelPrice);
+            divButton.appendChild(buttonAdd);
+            divButton.appendChild(buttonSub);
+
+            div.appendChild(divName);
+            div.appendChild(divImage);
+            div.appendChild(divQuantity);
+            div.appendChild(divButton);
+            div.appendChild(divPrice);
+
+
+            info.appendChild(div);
+        })
+    </script>
+</body>
+
+</html>
