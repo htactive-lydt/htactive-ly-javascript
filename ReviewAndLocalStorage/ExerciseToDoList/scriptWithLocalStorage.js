@@ -48,7 +48,7 @@ class ToDoClass {
             let divUndo = document.getElementById("undo");
             console.log(this.generateUndo());
             divUndo.innerHTML = this.generateUndo();
-            this.timedCount();
+            this.timer = setInterval(this.timedCount, 1000);
         }
 
     }
@@ -175,13 +175,10 @@ class ToDoClass {
             let second = c.textContent;
             if (second == 0) {
                 document.getElementById("undo").innerHTML = "";
+                clearInterval(this.timer)
             } else {
                 console.log(second);
                 document.getElementById("second").textContent = second - 1;
-
-                // setTimeout(this.timedCount, 1000);
-                clearInterval(setInterval(this.timedCount, 1000));
-                setInterval(this.timedCount, 1000);
             }
         }
     }
