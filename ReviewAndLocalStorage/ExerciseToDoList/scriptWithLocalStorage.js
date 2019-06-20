@@ -25,11 +25,9 @@ class ToDoClass {
         var checkbox = event.target;
         if (checkbox.checked) {
             this.tasks[index].isComplete = true;
-            localStorage.setItem('items', JSON.stringify(this.tasks));
 
         } else {
             this.tasks[index].isComplete = false;
-            localStorage.setItem('items', JSON.stringify(this.tasks));
         }
         this.loadTasks();
     }
@@ -39,7 +37,6 @@ class ToDoClass {
 
         if (confirm("Are you sure you want to delete this?")) {
             this.tasks.splice(index, 1);
-            localStorage.setItem('items', JSON.stringify(this.tasks));
             this.loadTasks();
         }
 
@@ -47,8 +44,6 @@ class ToDoClass {
 
     addTask(task) {
         this.tasks.push({ task: task, isComplete: false })
-        localStorage.setItem('items', JSON.stringify(this.tasks));
-        console.log("Thêm task thành công");
         this.loadTasks();
     }
 
@@ -72,6 +67,7 @@ class ToDoClass {
     }
 
     loadTasks() {
+        localStorage.setItem('items', JSON.stringify(this.tasks));
         let taskHtml = this.tasks.reduce((html, task, index) => html += this.generateTaskHtml(task, index), '');
         document.getElementById('taskList').innerHTML = taskHtml;
     }
