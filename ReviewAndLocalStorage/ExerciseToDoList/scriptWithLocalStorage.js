@@ -3,14 +3,14 @@ class ToDoClass {
     constructor() {
         this.taskUndo = {};
         this.indexUndo;
-        this.tasks = JSON.parse(localStorage.getItem('items')) || [];
+        this.tasks = JSON.parse(localStorage.getItem("items")) || [];
 
         this.loadTasks(this.tasks);
         this.addEventListener();
     }
 
     addEventListener() {
-        document.getElementById('addTask').addEventListener('keypress', event => {
+        document.getElementById("addTask").addEventListener("keypress", event => {
             if (event.keyCode === 13) {
                 this.addTask(event.target.value);
                 event.target.value = "";
@@ -19,8 +19,8 @@ class ToDoClass {
     }
 
     makeId = (length) => {
-        var result = '';
-        var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var result = "";
+        var characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         var charactersLength = characters.length;
         for (var i = 0; i < length; i++) {
             result += characters.charAt(Math.floor(Math.random() * charactersLength));
@@ -46,7 +46,7 @@ class ToDoClass {
     addTaskClick = () => {
         let task = document.getElementById("addTask").value;
         this.addTask(task);
-        document.getElementById('addTask').value = "";
+        document.getElementById("addTask").value = "";
     }
 
     completeTodo = (id) => {
@@ -206,14 +206,14 @@ class ToDoClass {
     }
 
     loadTasks = (tasksList) => {
-        localStorage.setItem('items', JSON.stringify(this.tasks));
+        localStorage.setItem("items", JSON.stringify(this.tasks));
         document.getElementById("error").style.display = "none";
         this.countMarkDone();
         let taskHtml = tasksList.reduce((html, task) => html += this.generateTaskHtml(task), '');
         if (tasksList != undefined && tasksList.length != 0) {
             taskHtml = this.generateSelectAllHtml() + taskHtml;
         }
-        document.getElementById('taskList').innerHTML = taskHtml;
+        document.getElementById("taskList").innerHTML = taskHtml;
     }
 
 }
