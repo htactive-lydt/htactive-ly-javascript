@@ -1,7 +1,7 @@
 data = JSON.parse(localStorage.getItem("items"));
 
 let generateHtmlClassOption = ({ id, idClass }, control) => {
-    let html = `<select name="" id="class-${id}" class="form-control" ${control === 1 ? "disabled" : ""} style="background-color: #fff">`;
+    let html = `<select name="" id="${control === 1 ? "class-"+ id : "classOption"}" class="form-control" ${control === 1 ? "disabled" : ""} style="background-color: #fff">`;
     data.classes.forEach(item => {
         html += `<option value="${item.id}" ${idClass === item.id ? "selected" : ""}>${item.name}</option>`
     });
@@ -62,13 +62,14 @@ let saveAdd = () => {
     let birthday = document.getElementById("birthday").value;
     let address = document.getElementById("address").value;
     let idClass = document.getElementById("classOption").value;
+    console.log("Ly" + idClass)
     let listId = data.students.map(item => item.id);
     data.students.push({
         id: Math.max(...listId) + 1,
         name: name,
         birthday: birthday,
         address: address,
-        idClass: idClass
+        idClass: idClass,
     })
     clearAddHtml();
     loadStudent(data.students)
