@@ -1,19 +1,22 @@
-// const fs = require('fs');
-// const config = fs.readFileSync('ExerciseStudentManagement/data.json');
-// let data = JSON.parse(config);
-// console.log(data.students)
+data = JSON.parse(localStorage.getItem("items"));
 
-import { userData } from './data.js'
-let data = JSON.parse(userData);
-console.log(data)
+let generateHtmlClassOption = ({ id, idClass }, control) => {
+    let html = `<select name="" id="class-${id}" class="form-control" ${control === 1 ? "disabled" : ""} style="background-color: #fff">`;
+    data.classes.forEach(item => {
+        html += `<option value="${item.id}" ${idClass === item.id ? "selected" : ""}>${item.name}</option>`
+    });
+    html += `</select>`;
+    return html;
+}
 
-let generateHtmlTr = (student) => {
+let generateHtmlTr = ({ id, name, birthday, address, idClass }) => {
     return `
     <tr>
-        <td>1</td>
-        <td><input type="text" name="title" class="border-none" readonly="" value="${student.name}"></td>
-        <td><input type="text" name="content" class="border-none" readonly="" value="${student.birthday}"></td>
-        <td><input type="text" name="content" class="border-none" readonly="" value="${student.birthday}"></td>
+        <td>${id}</td>
+        <td><input type="text" id="name-${id}" name="title" style="border: none; background-color: #fff" disabled value="${name}"></td>
+        <td><input type="date" id="birthday-${id}" name="content" style="border: none; background-color: #fff" disabled value="${birthday}"></td>
+        <td><input type="text" id="address-${id}" name="content" style="border: none; background-color: #fff" disabled value="${address}"></td>
+        <td>${generateHtmlClassOption({id, idClass}, 1)}</td>
         <td class="text-center">
             <button type="button" class="btn btn-warning mr-10">
                 <i class="fa fa-pencil"></i>
@@ -27,11 +30,19 @@ let generateHtmlTr = (student) => {
 }
 
 let loadStudent = (studentList) => {
+    localStorage.setItem("items", JSON.stringify(data));
+    document.getElementById("classOption").innerHTML = generateHtmlClassOption("", 0)
     let studentHtml = studentList.reduce((html, student) => html += generateHtmlTr(student), '');
-    document.getElementById("studentList").innerHTML = taskHtml;
+    document.getElementById("studentList").innerHTML = studentHtml;
 }
 
-loadStudent(data.students)
+loadStudent(data.students);
+
+let clearAddHtml = () => {
+    document.getElementById("name").value = "";
+    document.getElementById("birthday").value = "";
+    document.getElementById("address").value = "";
+}
 
 let add = () => {
     document.getElementById("btnAdd").setAttribute("Hidden", true)
@@ -42,5 +53,23 @@ let add = () => {
 let cancel = () => {
     document.getElementById("btnCancel").setAttribute("Hidden", true)
     document.getElementById("btnAdd").removeAttribute("Hidden");
-    document.getElementById("form-add").setAttribute("Hidden", true)
+    document.getElementById("form-add").setAttribute("Hidden", true);
+    clearAddHtml();
+}
+
+let saveAdd = () => {
+    let name = document.getElementById("name").value;
+    let birthday = document.getElementById("birthday").value;
+    let address = document.getElementById("address").value;
+    let idClass = document.getElementById("classOption").value;
+    let listId = data.students.map(item => item.id);
+    data.students.push({
+        id: Math.max(...listId) + 1,
+        name: name,
+        birthday: birthday,
+        address: address,
+        idClass: idClass
+    })
+    clearAddHtml();
+    loadStudent(data.students)
 }
