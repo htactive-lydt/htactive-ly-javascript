@@ -116,8 +116,8 @@ let saveEdit = (id) => {
 }
 
 let filterStudent = () => {
-    let studentName = document.getElementById("searchContent").value;
-    let result = data.students.filter(item => item.name.search(studentName) != -1);
+    let className = document.getElementById("searchContent").value;
+    let result = data.classes.filter(item => item.name.search(className) != -1);
     return result;
 }
 
@@ -127,5 +127,5 @@ let searchStudent = () => {
 
 let reLoad = () => {
     document.getElementById("searchContent").value = "";
-    loadTeacher(data.students);
+    loadTeacher(data.classes);
 }
