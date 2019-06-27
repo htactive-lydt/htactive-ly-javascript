@@ -37,35 +37,23 @@
                     </a>
                 </li>
 
-                <li class="active">
+                <li>
                     <a href="./index.html">
                         <i class="fa fa-user fa-lg"></i> Student
                         <span class="arrow"></span>
                     </a>
                 </li>
-                <li>
-                    <a href="./class.html">
-                        <i class="fa fa-home fa-lg"></i> Class
-                        <span class="arrow"></span>
-                    </a>
+                <li class="active">
+                    <a href="class.html"><i class="fa fa-home fa-lg"></i> Class <span class="arrow"></span></a>
                 </li>
                 <li>
-                    <a href="#">
-                        <i class="fa fa-user-secret fa-lg"></i> Teacher
-                        <span class="arrow"></span>
-                    </a>
+                    <a href="#"><i class="fa fa-user-secret fa-lg"></i> Teacher <span class="arrow"></span></a>
                 </li>
-                <li class="collapsed">
-                    <a href="#">
-                        <i class="fa fa-book fa-lg"></i> Subject
-                        <span class="arrow"></span>
-                    </a>
+                <li>
+                    <a href="#"><i class="fa fa-book fa-lg"></i> Subject <span class="arrow"></span></a>
                 </li>
-                <li class="collapsed">
-                    <a href="#">
-                        <i class="fa fa-star fa-lg"></i> Score
-                        <span class="arrow"></span>
-                    </a>
+                <li>
+                    <a href="#"><i class="fa fa-star fa-lg"></i> Score <span class="arrow"></span></a>
                 </li>
             </ul>
         </div>
@@ -76,7 +64,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <button type="button" class="btn btn-success" onclick="add()" id="btnAdd">
-                         <span>ADD NEW</span>
+                         <span>ADD NEW CLASS</span>
                         </button>
                         <button type="button" class="btn btn-success" onclick="cancel()" id="btnCancel" hidden>
                           <span>CANCEL</span>
@@ -88,17 +76,7 @@
                                 <input type="text" class="form-control" id="name" name="title" placeholder="Name" required="">
                             </div>
                         </div>
-                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                            <div class="form-group">
-                                <input type="date" class="form-control" id="birthday" name="content" placeholder="Birthday" required="">
-                            </div>
-                        </div>
-                        <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3">
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="address" name="title" placeholder="Address" required="">
-                            </div>
-                        </div>
-                        <div class="col-xs-6 col-sm-3 col-md-3 col-lg-2" id="option">
+                        <div class="col-xs-6 col-sm-5 col-md-5 col-lg-4" id="option">
 
                         </div>
                         <div class="col-xs-6 col-sm-2 col-md-2 col-lg-1">
@@ -109,7 +87,7 @@
             </form>
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title">LIST OF STUDENT</h3>
+                    <h3 class="panel-title">LIST OF CLASS</h3>
                 </div>
                 <div class="panel-body">
                     <div class="row" style="margin-bottom: 20px;">
@@ -128,10 +106,8 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th>#</th>
-                                    <th>NAME STUDENT</th>
-                                    <th>BIRTHDAY</th>
-                                    <th>ADDRESS</th>
-                                    <th>CLASS</th>
+                                    <th>NAME CLASS</th>
+                                    <th>TEACHER</th>
                                     <th>CONTROL</th>
                                 </tr>
                             </thead>
@@ -149,7 +125,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Bootstrap JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="script.js"></script>
+    <script src="scriptClass.js"></script>
 </body>
 
 </html>
